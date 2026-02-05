@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Debug UI - Goals</title>
+  <style>
+    body{font-family: system-ui,Segoe UI,Roboto,Arial;margin:20px}
+    pre{background:#f5f5f5;padding:12px;border-radius:8px;overflow:auto}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#667eea;color:#fff;margin-bottom:10px}
+  </style>
+</head>
+<body>
+  <h1>Debug: Goals</h1>
+  <div>
+    <span class="badge" id="count">Loading...</span>
+    <button onclick="reload()">Reload</button>
+  </div>
+  <h2>Raw /api/goals</h2>
+  <pre id="raw">Loading...</pre>
+  <h2>/api/debug</h2>
+  <pre id="dbg">Loading...</pre>
+
+<script>
+async function load(){
+  try{
+    const g = await fetch('/api/goals?_=' + Date.now()).then(r=>r.json());
+    document.getElementById('raw').textContent = JSON.stringify(g,null,2);
+    document.getElementById('count').textContent = 'Goals: ' + (Array.isArray(g)?g.length:0);
+  }catch(e){document.getElementById('raw').textContent = 'Error: '+e}
+  try{
+    const d = await fetch('/api/debug?_=' + Date.now()).then(r=>r.json());
+    document.getElementById('dbg').textContent = JSON.stringify(d,null,2);
+  }catch(e){document.getElementById('dbg').textContent = 'Error: '+e}
+}
+function reload(){load();}
+load();
+</script>
+</body>
+</html>

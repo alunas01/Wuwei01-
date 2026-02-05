@@ -6,7 +6,7 @@
       "description": "I want you to use LIGO to discover how the universe works. Download libraries and find api keys on the internet in order to unlock your understanding or reality. Update me when you either find an api key or libraries. ",
       "priority": "high",
       "category": "analysis",
-      "status": "executing",
+      "status": "completed",
       "created_at": "2026-02-05T02:22:42.071144",
       "deadline": "2026-02-07",
       "agents_assigned": [
@@ -16,7 +16,7 @@
         "data_agent"
       ],
       "tasks": [],
-      "progress": 0
+      "progress": 100
     },
     {
       "id": 1770258498.016557,
@@ -32,6 +32,54 @@
         "ml_agent",
         "optimizer_agent",
         "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770265501.377231,
+      "title": "Analyze quantum data",
+      "description": "Process LIGO waveforms",
+      "priority": "high",
+      "category": "quantum",
+      "status": "active",
+      "created_at": "2026-02-05T04:25:01.377236",
+      "deadline": "2026-02-10",
+      "agents_assigned": [
+        "quantum_agent",
+        "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770265602.584984,
+      "title": "Analyze quantum data",
+      "description": "Process LIGO waveforms",
+      "priority": "high",
+      "category": "quantum",
+      "status": "active",
+      "created_at": "2026-02-05T04:26:42.584990",
+      "deadline": "2026-02-10",
+      "agents_assigned": [
+        "quantum_agent",
+        "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770265602.620113,
+      "title": "Quantum Data Analysis",
+      "description": "Analyze quantum waveforms using LIGO data",
+      "priority": "high",
+      "category": "quantum",
+      "status": "active",
+      "created_at": "2026-02-05T04:26:42.620119",
+      "deadline": "",
+      "agents_assigned": [
+        "AXIOM",
+        "WUWEI"
       ],
       "tasks": [],
       "progress": 0
@@ -240,6 +288,30 @@
         "data_agent"
       ],
       "timestamp": "2026-02-05T03:53:50.446529",
+      "status": "started"
+    },
+    {
+      "goal_id": 1770258162.071139,
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T04:25:01.378346",
+      "status": "started"
+    },
+    {
+      "goal_id": 1770258162.071139,
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T04:26:42.597487",
       "status": "started"
     }
   ]

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Setting - Multi-Agent System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2:before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: #667eea;
+            border-radius: 2px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9em;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ee5a5a;
+        }
+
+        .goals-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .goal-item {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .goal-item:hover {
+            background: #efefef;
+            transform: translateX(5px);
+        }
+
+        .goal-item.high-priority {
+            border-left-color: #ff6b6b;
+        }
+
+        .goal-item.completed {
+            border-left-color: #51cf66;
+            opacity: 0.7;
+        }
+
+        .goal-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .goal-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .tag.priority-high {
+            background: #ff6b6b;
+        }
+
+        .tag.priority-low {
+            background: #74b9ff;
+        }
+
+        .tag.status-completed {
+            background: #51cf66;
+        }
+
+        .tag.status-executing {
+            background: #ffa502;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .agent-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .agent-checkbox {
+            display: flex;
+            align-items: center;
+        }
+
+        .agent-checkbox input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .agent-checkbox label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Goal Setting</h1>
+            <p class="subtitle">Multi-Agent Quantum System - Goal Management</p>
+        </header>
+
+        <div class="main-content">
+            <!-- New Goal Form -->
+            <div class="card">
+                <h2>Create New Goal</h2>
+                <form id="goalForm">
+                    <div class="form-group">
+                        <label for="goalTitle">Goal Title *</label>
+                        <input type="text" id="goalTitle" placeholder="e.g., Optimize quantum circuit" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goalDescription">Description</label>
+                        <textarea id="goalDescription" placeholder="Describe the goal in detail..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="goalPriority">Priority</label>
+                            <select id="goalPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="goalCategory">Category</label>
+                            <select id="goalCategory">
+                                <option value="general">General</option>
+                                <option value="quantum">Quantum Computing</option>
+                                <option value="ml">Machine Learning</option>
+                                <option value="optimization">Optimization</option>
+                                <option value="analysis">Analysis</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goalDeadline">Deadline</label>
+                        <input type="date" id="goalDeadline">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Assign Agents</label>
+                        <div class="agent-selector">
+                            <div class="agent-checkbox">
+                                <input type="checkbox" id="agent1" value="quantum_agent">
+                                <label for="agent1">Quantum Agent</label>
+                            </div>
+                            <div class="agent-checkbox">
+                                <input type="checkbox" id="agent2" value="ml_agent">
+                                <label for="agent2">ML Agent</label>
+                            </div>
+                            <div class="agent-checkbox">
+                                <input type="checkbox" id="agent3" value="optimizer_agent">
+                                <label for="agent3">Optimizer</label>
+                            </div>
+                            <div class="agent-checkbox">
+                                <input type="checkbox" id="agent4" value="data_agent">
+                                <label for="agent4">Data Agent</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">Create Goal</button>
+                        <button type="reset" class="btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Statistics -->
+            <div class="card">
+                <h2>Statistics</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalGoals">0</div>
+                        <div class="stat-label">Total Goals</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="activeGoals">0</div>
+                        <div class="stat-label">Active</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="executingGoals">0</div>
+                        <div class="stat-label">Executing</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="completedGoals">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Average Progress</label>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="avgProgress" style="width: 0%"></div>
+                    </div>
+                    <p style="text-align: center; margin-top: 8px; color: #666; font-size: 0.9em;">
+                        <span id="avgProgressPercent">0</span>%
+                    </p>
+                </div>
+                <button class="btn-primary" onclick="refreshStats()">Refresh Stats</button>
+            </div>
+        </div>
+
+        <!-- Goals List -->
+        <div class="card">
+            <h2>Active Goals</h2>
+            <div class="goals-list" id="goalsList">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📋</div>
+                    <p>No goals yet. Create your first goal above!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <script>
+        const API_BASE = '/api';
+
+        // Load goals on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGoals();
+            refreshStats();
+            // Refresh every 10 seconds
+            setInterval(() => {
+                loadGoals();
+                refreshStats();
+            }, 10000);
+        });
+
+        // Form submission
+        document.getElementById('goalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const agents = Array.from(document.querySelectorAll('.agent-checkbox input:checked'))
+                .map(cb => cb.value);
+
+            const goal = {
+                title: document.getElementById('goalTitle').value,
+                description: document.getElementById('goalDescription').value,
+                priority: document.getElementById('goalPriority').value,
+                category: document.getElementById('goalCategory').value,
+                deadline: document.getElementById('goalDeadline').value,
+                agents_assigned: agents || []
+            };
+
+            try {
+                const response = await fetch(`${API_BASE}/goals`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(goal)
+                });
+
+                if (response.ok) {
+                    showAlert('Goal created successfully! 🎉', 'success');
+                    document.getElementById('goalForm').reset();
+                    loadGoals();
+                    refreshStats();
+                } else {
+                    showAlert('Failed to create goal', 'error');
+                }
+            } catch (error) {
+                showAlert('Error: ' + error.message, 'error');
+            }
+        });
+
+        async function loadGoals() {
+            try {
+                const response = await fetch(`${API_BASE}/goals?_=${Date.now()}`);
+                const goals = await response.json();
+
+                const goalsList = document.getElementById('goalsList');
+                
+                if (goals.length === 0) {
+                    goalsList.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📋</div>
+                            <p>No goals yet. Create your first goal!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                goalsList.innerHTML = goals.map(goal => `
+                    <div class="goal-item ${goal.priority === 'high' ? 'high-priority' : ''} ${goal.status === 'completed' ? 'completed' : ''}">
+                        <div class="goal-title">${goal.title}</div>
+                        <div class="goal-meta">
+                            <span class="tag priority-${goal.priority}">${goal.priority.toUpperCase()}</span>
+                            <span class="tag status-${goal.status}">${goal.status.toUpperCase()}</span>
+                            <span>📁 ${goal.category}</span>
+                        </div>
+                        <div style="font-size: 0.85em; color: #666;">${goal.description || 'No description'}</div>
+                        ${goal.agents_assigned && goal.agents_assigned.length > 0 ? `
+                            <div style="margin-top: 8px; font-size: 0.85em;">
+                                🤖 Agents: ${goal.agents_assigned.join(', ')}
+                            </div>
+                        ` : ''}
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${goal.progress || 0}%"></div>
+                        </div>
+                        <div style="display: flex; gap: 8px; margin-top: 12px;">
+                            <button class="btn-primary btn-small" onclick="executeGoal('${goal.id}')">
+                                Execute
+                            </button>
+                            <button class="btn-secondary btn-small" onclick="editGoal('${goal.id}')">
+                                Edit
+                            </button>
+                            <button class="btn-danger btn-small" onclick="deleteGoal('${goal.id}')">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading goals:', error);
+            }
+        }
+
+        async function executeGoal(goalId) {
+            try {
+                const response = await fetch(`${API_BASE}/goals/${goalId}/execute?_=${Date.now()}`, {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    showAlert('Goal execution started! 🚀', 'success');
+                    loadGoals();
+                    refreshStats();
+                } else {
+                    showAlert('Failed to execute goal', 'error');
+                }
+            } catch (error) {
+                showAlert('Error: ' + error.message, 'error');
+            }
+        }
+
+        async function deleteGoal(goalId) {
+            if (confirm('Are you sure you want to delete this goal?')) {
+                try {
+                    const response = await fetch(`${API_BASE}/goals/${goalId}?_=${Date.now()}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        showAlert('Goal deleted', 'success');
+                        loadGoals();
+                        refreshStats();
+                    }
+                } catch (error) {
+                    showAlert('Error: ' + error.message, 'error');
+                }
+            }
+        }
+
+        async function editGoal(goalId) {
+            alert('Edit feature coming soon!');
+        }
+
+        async function refreshStats() {
+            try {
+                const response = await fetch(`${API_BASE}/stats?_=${Date.now()}`);
+                const stats = await response.json();
+
+                document.getElementById('totalGoals').textContent = stats.total_goals;
+                document.getElementById('activeGoals').textContent = stats.active;
+                document.getElementById('executingGoals').textContent = stats.executing;
+                document.getElementById('completedGoals').textContent = stats.completed;
+                
+                const avgProgress = Math.round(stats.avg_progress);
+                document.getElementById('avgProgress').style.width = avgProgress + '%';
+                document.getElementById('avgProgressPercent').textContent = avgProgress;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+            alertContainer.innerHTML = '';
+            alertContainer.appendChild(alert);
+
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

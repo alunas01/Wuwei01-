@@ -1,0 +1,90 @@
+{
+  "goals": [
+    {
+      "id": 1770258162.071139,
+      "title": "Understanding the universe ",
+      "description": "I want you to use LIGO to discover how the universe works. Download libraries and find api keys on the internet in order to unlock your understanding or reality. Update me when you either find an api key or libraries. ",
+      "priority": "high",
+      "category": "analysis",
+      "status": "executing",
+      "created_at": "2026-02-05T02:22:42.071144",
+      "deadline": "2026-02-07",
+      "agents_assigned": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770258498.016557,
+      "title": "Learn",
+      "description": "Use current understanding to write about in own words how the universe works. ",
+      "priority": "medium",
+      "category": "ml",
+      "status": "executing",
+      "created_at": "2026-02-05T02:28:18.016565",
+      "deadline": "",
+      "agents_assigned": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    }
+  ],
+  "history": [
+    {
+      "goal_id": "1770258162.071139",
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T02:22:45.486623",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258498.016557",
+      "goal_title": "Learn",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T02:28:25.892696",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258162.071139",
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T02:50:43.186749",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258498.016557",
+      "goal_title": "Learn",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T02:50:49.218337",
+      "status": "started"
+    }
+  ]
+}

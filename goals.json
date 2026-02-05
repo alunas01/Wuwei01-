@@ -45,81 +45,37 @@
       "progress": 0
     },
     {
-      "id": 1770265501.377231,
-      "title": "Analyze quantum data",
-      "description": "Process LIGO waveforms",
+      "id": 1770266262.16489,
+      "title": "Understand how the universe works and train ",
+      "description": "Use LiGO to understand how the universe works ",
       "priority": "high",
-      "category": "quantum",
-      "status": "active",
-      "created_at": "2026-02-05T04:25:01.377236",
-      "deadline": "2026-02-10",
+      "category": "analysis",
+      "status": "executing",
+      "created_at": "2026-02-05T04:37:42.164896",
+      "deadline": "2026-02-06",
       "agents_assigned": [
         "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
         "data_agent"
       ],
       "tasks": [],
       "progress": 0
     },
     {
-      "id": 1770265602.584984,
-      "title": "Analyze quantum data",
-      "description": "Process LIGO waveforms",
-      "priority": "high",
-      "category": "quantum",
+      "id": 1770266364.136992,
+      "title": "Use nasa api ",
+      "description": "Use the nasa telescope to discover more about the universe ",
+      "priority": "medium",
+      "category": "analysis",
       "status": "active",
-      "created_at": "2026-02-05T04:26:42.584990",
-      "deadline": "2026-02-10",
+      "created_at": "2026-02-05T04:39:24.136998",
+      "deadline": "2026-02-06",
       "agents_assigned": [
         "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
         "data_agent"
-      ],
-      "tasks": [],
-      "progress": 0
-    },
-    {
-      "id": 1770265602.620113,
-      "title": "Quantum Data Analysis",
-      "description": "Analyze quantum waveforms using LIGO data",
-      "priority": "high",
-      "category": "quantum",
-      "status": "active",
-      "created_at": "2026-02-05T04:26:42.620119",
-      "deadline": "",
-      "agents_assigned": [
-        "AXIOM",
-        "WUWEI"
-      ],
-      "tasks": [],
-      "progress": 0
-    },
-    {
-      "id": 1770265662.795329,
-      "title": "Analyze quantum data",
-      "description": "Process LIGO waveforms",
-      "priority": "high",
-      "category": "quantum",
-      "status": "active",
-      "created_at": "2026-02-05T04:27:42.795335",
-      "deadline": "2026-02-10",
-      "agents_assigned": [
-        "quantum_agent",
-        "data_agent"
-      ],
-      "tasks": [],
-      "progress": 0
-    },
-    {
-      "id": 1770265662.814175,
-      "title": "Quantum Data Analysis",
-      "description": "Analyze quantum waveforms using LIGO data",
-      "priority": "high",
-      "category": "quantum",
-      "status": "active",
-      "created_at": "2026-02-05T04:27:42.814179",
-      "deadline": "",
-      "agents_assigned": [
-        "AXIOM",
-        "WUWEI"
       ],
       "tasks": [],
       "progress": 0
@@ -364,6 +320,30 @@
         "data_agent"
       ],
       "timestamp": "2026-02-05T04:27:42.802877",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770266262.16489",
+      "goal_title": "Understand how the universe works and train ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T04:37:49.355006",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770266262.16489",
+      "goal_title": "Understand how the universe works and train ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T04:39:29.118878",
       "status": "started"
     }
   ]

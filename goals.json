@@ -16,7 +16,15 @@
         "data_agent"
       ],
       "tasks": [],
-      "progress": 100
+      "progress": 100,
+      "results": {
+        "key_insight": "Universe structure follows quantum patterns",
+        "methodology": "LIGO waveform analysis + ML interpretation",
+        "confidence": "87%",
+        "agents_used": "quantum_agent, ml_agent, optimizer_agent, data_agent"
+      },
+      "notes": "Analysis complete using all assigned agents",
+      "results_added_at": "2026-02-05T04:33:01.800980"
     },
     {
       "id": 1770258498.016557,
@@ -76,6 +84,38 @@
       "category": "quantum",
       "status": "active",
       "created_at": "2026-02-05T04:26:42.620119",
+      "deadline": "",
+      "agents_assigned": [
+        "AXIOM",
+        "WUWEI"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770265662.795329,
+      "title": "Analyze quantum data",
+      "description": "Process LIGO waveforms",
+      "priority": "high",
+      "category": "quantum",
+      "status": "active",
+      "created_at": "2026-02-05T04:27:42.795335",
+      "deadline": "2026-02-10",
+      "agents_assigned": [
+        "quantum_agent",
+        "data_agent"
+      ],
+      "tasks": [],
+      "progress": 0
+    },
+    {
+      "id": 1770265662.814175,
+      "title": "Quantum Data Analysis",
+      "description": "Analyze quantum waveforms using LIGO data",
+      "priority": "high",
+      "category": "quantum",
+      "status": "active",
+      "created_at": "2026-02-05T04:27:42.814179",
       "deadline": "",
       "agents_assigned": [
         "AXIOM",
@@ -312,6 +352,18 @@
         "data_agent"
       ],
       "timestamp": "2026-02-05T04:26:42.597487",
+      "status": "started"
+    },
+    {
+      "goal_id": 1770258162.071139,
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T04:27:42.802877",
       "status": "started"
     }
   ]

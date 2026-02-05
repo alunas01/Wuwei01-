@@ -169,6 +169,78 @@
       ],
       "timestamp": "2026-02-05T03:27:44.579904",
       "status": "started"
+    },
+    {
+      "goal_id": "1770258162.071139",
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:40:31.658328",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258498.016557",
+      "goal_title": "Learn",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:40:35.809412",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258162.071139",
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:43:25.227280",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770258498.016557",
+      "goal_title": "Learn",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:43:29.116214",
+      "status": "started"
+    },
+    {
+      "goal_id": "1770263145.576112",
+      "goal_title": "Test",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:45:50.356901",
+      "status": "started"
+    },
+    {
+      "goal_id": 1770258162.071139,
+      "goal_title": "Understanding the universe ",
+      "agents": [
+        "quantum_agent",
+        "ml_agent",
+        "optimizer_agent",
+        "data_agent"
+      ],
+      "timestamp": "2026-02-05T03:53:50.446529",
+      "status": "started"
     }
   ]
 }
